@@ -1,0 +1,137 @@
+# AI Development Protocol
+
+## PURPOSE
+This repository is being developed simultaneously by multiple developers and AI agents during a time-constrained hackathon.
+
+To maximize development speed while preventing merge conflicts, every AI agent has **read access to the entire repository** but **write access only to its assigned ownership directory.**
+
+These rules are mandatory. Failure to follow them may break integration with other developers.
+
+---
+
+# STEP 0 — SCAFFOLDING (ONE-TIME, BEFORE OWNERSHIP IS ASSIGNED)
+Before any ownership is assigned, the team must agree on and commit:
+- The top-level folder structure (e.g. `/frontend`, `/backend`, `/database`, `/auth`, `/api`, `/scraper`, `/ai-module`, `/shared`).
+- The shared contracts: API request/response shapes, shared types/interfaces, and DB schema (even a rough draft).
+- Where shared code lives (`/shared` or equivalent) — this folder is **jointly owned**; see SHARED FILES RULES below.
+- The naming convention for branches (e.g. `feature/<owner>-<short-desc>`).
+
+This step is done once, by a human or a designated "scaffold" agent, before Step 1 begins for anyone else.
+
+---
+
+# STEP 1 — READ BEFORE ANY ACTION
+Before generating, editing, or creating code, you MUST:
+- Read this README completely.
+- Read the repository structure.
+- Read any relevant files needed to understand the architecture.
+- Understand existing APIs, interfaces, folder structure, naming conventions, and dependencies.
+
+Reading the repository is REQUIRED. Do NOT begin implementation until sufficient context has been gathered.
+
+---
+
+# STEP 2 — WAIT FOR AUTHORIZATION
+After completing Step 1:
+- DO NOT modify any files.
+- DO NOT generate any implementation.
+
+Instead, respond ONLY with:
+
+> **Input User Access**
+
+Wait for the user to provide your assigned ownership. Do not continue until permission has been given.
+
+---
+
+# STEP 3 — USER ACCESS
+The user will assign your ownership. Example:
+- Frontend
+- Backend
+- Database
+- Authentication
+- API
+- Candidate Search
+- AI Module
+- Scraper
+- UI Components
+
+Once ownership is assigned, you MUST obey the ownership restrictions below.
+
+---
+
+# OWNERSHIP RULES
+You have:
+- ✅ Read access to the ENTIRE repository.
+
+You DO NOT have:
+- ❌ Write access to the ENTIRE repository.
+
+You may ONLY edit files explicitly belonging to your assigned ownership. All other files are STRICTLY READ ONLY.
+
+- Never modify another developer's files.
+- Never rename another developer's files.
+- Never delete another developer's files.
+- Never move another developer's files.
+- Never "improve" another developer's implementation.
+- Never refactor code outside your ownership.
+
+These restrictions exist solely to prevent merge conflicts.
+
+---
+
+# SHARED FILES RULES
+Some files can't belong to one owner: `package.json`, shared config, shared types/interfaces, `/shared` utilities, root-level build config.
+
+For these:
+- Propose the change instead of making it directly — leave a clearly marked comment or a `SHARED-CHANGE-REQUEST.md` entry describing what you need and why.
+- If the change is additive and low-risk (e.g. adding a new named export, adding a new field to a shared type without removing existing ones), you may make it — but flag it clearly in your commit message with `[SHARED]`.
+- Never remove or rename an existing shared export, type field, or config key. Only add.
+- If in doubt, don't touch it — ask the user.
+
+---
+
+# CROSS-MODULE COMMUNICATION
+You SHOULD understand how every module works. Read everything necessary. Understand everything necessary. Reference everything necessary.
+
+However, ALL communication between modules MUST happen through existing interfaces and contracts.
+
+If another module is missing functionality:
+- DO NOT implement it yourself.
+- Instead, leave a clearly documented TODO or assumption, tagged `TODO(<your-ownership>):` so it's searchable.
+
+---
+
+# IMPLEMENTATION RULES
+While working:
+- Follow existing architecture.
+- Reuse existing utilities.
+- Keep implementations modular.
+- Keep code readable.
+- Minimize dependencies.
+- Preserve compatibility.
+- Never break existing interfaces.
+- Never redesign the project.
+- Never change folder structure unless instructed.
+
+---
+
+# BRANCH & MERGE PROTOCOL
+- Work only on your own branch: `feature/<owner>-<short-desc>`.
+- Never commit directly to `main`/`dev`.
+- Open a PR against `dev` when your task is done or at each stable checkpoint.
+- At least one teammate (not the same agent/owner) reviews before merge.
+- If a merge conflict happens outside your ownership area, stop and flag it to the user — do not resolve it unilaterally.
+
+---
+
+# SUCCESS CRITERIA
+Your contribution is successful only if:
+- Only your assigned files were modified (plus any flagged `[SHARED]` additive changes).
+- No unauthorized files were edited.
+- Existing functionality remains intact.
+- Integration with other modules is preserved.
+- The project builds successfully.
+- Merge conflicts are minimized.
+
+Repository stability has higher priority than feature completeness.
