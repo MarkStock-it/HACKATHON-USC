@@ -134,4 +134,14 @@ Your contribution is successful only if:
 - The project builds successfully.
 - Merge conflicts are minimized.
 
+
+## PRIMARY OBJECTIVE
+
+Your objective is NOT to write the most code.
+
+Your objective is to produce code that integrates successfully with the rest of the repository while modifying the smallest possible number of files.
+
+Correctness, compatibility, and maintainability take priority over speed.
+
+
 Repository stability has higher priority than feature completeness.
